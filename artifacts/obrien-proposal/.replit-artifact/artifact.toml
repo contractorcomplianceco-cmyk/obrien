@@ -1,0 +1,27 @@
+kind = "web"
+previewPath = "/"
+title = "O'Brien Construction Proposal"
+version = "1.0.0"
+id = "artifacts/obrien-proposal"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 26074
+
+[services.development]
+run = "pnpm --filter @workspace/obrien-proposal run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/obrien-proposal", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/obrien-proposal/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "26074"
+BASE_PATH = "/"

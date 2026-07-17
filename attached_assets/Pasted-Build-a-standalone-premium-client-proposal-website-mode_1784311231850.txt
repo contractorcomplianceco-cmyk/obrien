@@ -1,0 +1,344 @@
+Build a standalone premium client proposal website modeled after the structure, feel, and user experience of this reference project:
+
+https://github.com/contractorcomplianceco-cmyk/markkenny
+
+This should NOT be a generic landing page.
+This should be a private client proposal microsite similar to an executive investment presentation.
+
+PROJECT:
+O’Brien Construction, Inc.
+Nevada Classification B General
+Broadening License Classification by Qualifier Placement
+
+Use the uploaded O’Brien Construction logo as the primary brand asset.
+
+OBJECTIVE:
+Create a Fortune 500-style proposal experience where the client can:
+- Understand the engagement
+- Review scope
+- View investment breakdown
+- Select payment method
+- Download wire instructions
+
+DESIGN DIRECTION:
+
+Match the premium style of the reference:
+- Full-width hero sections
+- Editorial/executive presentation style
+- Smooth scrolling
+- Large typography
+- Premium spacing
+- Minimal clutter
+- High-end corporate aesthetic
+
+Brand Style:
+Primary:
+- Deep navy (#061A2E)
+- Midnight blue (#0B233F)
+- Charcoal (#111827)
+
+Secondary:
+- Metallic silver
+- White
+- Subtle champagne/gold accent
+
+Feel:
+- Fortune 500
+- Private equity presentation
+- Construction executive proposal
+- Professional services firm
+
+Avoid:
+- SaaS startup look
+- Bright colors
+- Cartoon icons
+- Generic pricing page
+- Excessive animations
+
+
+SITE STRUCTURE
+
+
+========================
+1. HERO SECTION
+========================
+
+Full-screen hero.
+
+Background:
+Use a premium construction/city/project image with dark overlay.
+
+Header:
+O’Brien Construction logo
+
+Main headline:
+
+Nevada Classification B General
+
+Secondary headline:
+
+Broadening License Classification
+by Qualifier Placement
+
+
+Supporting text:
+
+Contractor Compliance & Advisory will coordinate the qualifier placement process and Nevada licensing workflow to support O’Brien Construction, Inc.'s expansion objectives.
+
+
+CTA:
+Review Investment
+
+
+Add small trust badge:
+
+Secure Proposal Experience
+
+
+========================
+2. ENGAGEMENT OVERVIEW
+========================
+
+Section title:
+
+Strategic License Expansion Support
+
+
+Create three premium cards:
+
+
+CARD 1
+
+License Objective
+
+Expand Nevada contractor capabilities through Classification B General broadening support.
+
+
+CARD 2
+
+Qualifier Placement
+
+Coordinate qualified individual placement requirements necessary for Nevada classification expansion.
+
+
+CARD 3
+
+CCA Support
+
+Provide structured processing, documentation coordination, and application workflow management.
+
+
+========================
+3. PROCESS ROADMAP
+========================
+
+Create horizontal timeline:
+
+01
+Engagement Confirmation
+
+02
+Qualifier Coordination
+
+03
+Application Preparation
+
+04
+Nevada Submission Support
+
+05
+Final Processing
+
+
+========================
+4. INVESTMENT SUMMARY
+========================
+
+
+Create premium investment section.
+
+Title:
+
+Investment Overview
+
+
+Table:
+
+Qualifier Sourcing and Coordination Fee
+$6,000
+
+
+Initial Qualifier Placement Fee
+$3,000
+
+
+CCA Application Processing Fee
+$1,700
+
+
+Nevada State Application Fee
+$250
+
+
+Fingerprinting Estimate
+$70
+
+
+FedEx / Document Shipping Estimate
+$100
+
+
+Show summary card:
+
+WIRE PAYMENT TOTAL
+
+$11,120.00
+
+
+CARD PAYMENT TOTAL
+
+$11,553.68
+
+
+Include:
+
+Card payments include a 3.9% processing fee.
+
+
+========================
+5. PAYMENT OPTIONS
+========================
+
+
+Create two large premium payment cards.
+
+
+CARD ONE:
+
+PAY ONLINE
+
+Secure card payment through Authorize.net
+
+
+Button:
+
+Submit Card Payment
+
+
+Use EXACT code:
+
+
+<form name="PrePage" method="post" action="https://Simplecheckout.authorize.net/payment/CatalogPayment.aspx">
+<input type="hidden" name="LinkId" value="29df0394-07ed-4a9e-8e2d-ac9039126c5d" />
+<input type="submit" value="Submit Card Payment" />
+</form>
+
+
+CARD TWO:
+
+PAY BY WIRE TRANSFER
+
+
+Text:
+
+Prefer wire transfer? Download the wire instructions below.
+
+
+Button:
+
+Download Wire Instructions PDF
+
+
+Link:
+
+https://workdrive.zohoexternal.com/external/28c701d222f6195d0db6843cd8244de78fff5d1ef448b60fc7e8caf210c3a200/download
+
+
+Open in new tab.
+
+
+========================
+6. NEXT STEPS
+========================
+
+
+Create premium checklist:
+
+
+01
+Confirm engagement
+
+02
+Submit payment
+
+03
+Begin qualifier coordination
+
+04
+Start Nevada application workflow
+
+
+========================
+7. FOOTER
+========================
+
+
+Dark premium footer.
+
+Include:
+
+O’Brien Construction, Inc.
+
+Prepared by:
+Contractor Compliance & Advisory
+
+
+STRUCTURE REQUIREMENTS:
+
+Create:
+
+index.html
+style.css
+script.js
+/assets
+
+
+Use:
+- CSS animations
+- Intersection observer reveal effects
+- Smooth scrolling
+- Responsive design
+- Mobile optimization
+
+
+Add:
+- Sticky navigation
+- Logo header
+- Section navigation
+- Premium buttons
+- Glass effect cards
+- Executive-style typography
+
+
+IMPORTANT:
+
+This is a client proposal microsite, not a marketing website.
+
+The experience should feel like:
+"An executive received a private investment proposal from a Fortune 500 advisory firm."
+
+
+Use the uploaded logo throughout the design.
+
+Do not mention:
+- Finder's Fee
+
+Use:
+- Qualifier Sourcing and Coordination Fee
+
+
+Do not make licensing guarantees.
+
+Do not create fake testimonials.
+
+Deliver a complete working Replit project.

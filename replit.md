@@ -1,6 +1,6 @@
-# [Project name]
+# O'Brien Construction Proposal
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+Private client proposal microsite (Fortune 500 style) for O'Brien Construction, Inc. — Nevada Classification B General license expansion by qualifier placement, prepared by Contractor Compliance & Advisory. Lives in `artifacts/obrien-proposal`, served at `/`. Frontend-only; payment via embedded Authorize.net form (exact LinkId must not change) and wire-instructions PDF download link. Never mention "Finder's Fee" — use "Qualifier Sourcing and Coordination Fee". No licensing guarantees, no testimonials, no emojis.
 
 ## Run & Operate
 
