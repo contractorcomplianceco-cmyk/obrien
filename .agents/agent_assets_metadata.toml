@@ -6,3 +6,9 @@ id = "icW_s3RxI7-C45JYoNU5K"
 uri = "file://attached_assets/handoff/Rose%20to%20Carmen%20Project%20IT%20Spec%20Handoff%20and%20Go-Live%20Onboarding.docx"
 type = "word_document"
 title = "Rose to Carmen Project IT Spec Handoff and Go-Live Onboarding"
+
+[[outputs]]
+id = "Uzcdlmoo-dRWdtQLxFXPx"
+uri = "file://attached_assets/handoff/Rose%20to%20Carmen%20Handoff%20Update%20v2.docx"
+type = "word_document"
+title = "Rose to Carmen Handoff — Update v2"
