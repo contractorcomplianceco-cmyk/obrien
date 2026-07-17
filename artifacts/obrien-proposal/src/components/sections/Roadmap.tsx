@@ -11,22 +11,26 @@ const steps = [
 
 export function Roadmap() {
   return (
-    <section id="process" className="py-32 bg-gray-50 relative border-t border-gray-200 overflow-hidden">
+    <section id="process" className="py-24 md:py-32 bg-[#F9FAFB] relative border-t border-black/5 overflow-hidden selection:bg-champagne/20">
       <div className="container mx-auto px-6 md:px-12">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
-          className="mb-24 text-center"
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-20 md:mb-32 flex flex-col items-center text-center"
         >
-          <p className="text-champagne font-bold tracking-[0.2em] uppercase text-xs mb-4">Execution Strategy</p>
+          <div className="flex items-center gap-4 mb-6">
+            <div className="w-8 h-[1px] bg-champagne" />
+            <p className="text-champagne font-semibold tracking-[0.2em] uppercase text-[10px] md:text-xs">Execution Strategy</p>
+            <div className="w-8 h-[1px] bg-champagne" />
+          </div>
           <h2 className="text-3xl md:text-5xl font-serif text-navy">Process Roadmap</h2>
         </motion.div>
 
         <div className="relative max-w-5xl mx-auto">
           {/* Horizontal line for desktop */}
-          <div className="hidden md:block absolute top-12 left-0 right-0 h-[1px] bg-gray-300" />
+          <div className="hidden md:block absolute top-[2.75rem] left-[5%] right-[5%] h-[1px] bg-black/5" />
           
           <div className="flex flex-col md:flex-row justify-between gap-12 md:gap-4 relative z-10">
             {steps.map((step, i) => (
@@ -35,17 +39,17 @@ export function Roadmap() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className="flex flex-col md:items-center text-left md:text-center group"
+                transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center group gap-6 md:gap-0"
               >
                 {/* Number Circle */}
-                <div className="w-24 h-24 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-sm mb-6 transition-transform duration-500 group-hover:-translate-y-2 group-hover:border-champagne group-hover:shadow-md relative z-10">
-                  <span className="font-serif text-2xl text-navy group-hover:text-champagne transition-colors">{step.num}</span>
+                <div className="w-16 h-16 md:w-24 md:h-24 bg-white border border-black/5 rounded-full flex items-center justify-center shadow-sm md:mb-8 transition-all duration-700 ease-[0.16,1,0.3,1] group-hover:-translate-y-2 group-hover:border-champagne/50 group-hover:shadow-lg relative z-10 shrink-0">
+                  <span className="font-serif text-xl md:text-2xl text-navy/40 group-hover:text-champagne transition-colors duration-500">{step.num}</span>
                 </div>
                 
                 {/* Content */}
                 <div className="max-w-[160px]">
-                  <h4 className="font-sans font-medium text-navy text-sm tracking-wide leading-tight group-hover:text-charcoal transition-colors">
+                  <h4 className="font-sans font-medium text-navy text-sm tracking-wide leading-relaxed group-hover:text-charcoal transition-colors duration-500">
                     {step.label}
                   </h4>
                 </div>

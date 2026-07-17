@@ -8,7 +8,7 @@ export function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -21,14 +21,14 @@ export function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-500 border-b ${
+      className={`fixed top-0 w-full z-50 transition-all duration-700 ease-[0.16,1,0.3,1] border-b ${
         scrolled 
           ? 'bg-navy/95 backdrop-blur-md py-4 border-white/10 shadow-lg' 
-          : 'bg-transparent py-6 border-transparent'
+          : 'bg-transparent py-6 md:py-8 border-transparent'
       }`}
     >
       <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="block w-40 md:w-48 transition-opacity hover:opacity-80">
+        <a href="#" className="block w-40 md:w-48 transition-opacity duration-300 hover:opacity-80">
           <img src={logo} alt="O'Brien Construction, Inc." className="w-full h-auto object-contain" />
         </a>
         <nav className="hidden md:flex items-center gap-8">
@@ -36,7 +36,7 @@ export function Navbar() {
             <a
               key={link.name}
               href={link.href}
-              className="text-xs tracking-widest uppercase text-white/80 hover:text-white hover:border-b-accent border-b border-transparent transition-all duration-300 pb-1 font-medium"
+              className="text-[10px] tracking-[0.2em] uppercase text-white/70 hover:text-white transition-colors duration-300 font-medium"
             >
               {link.name}
             </a>
