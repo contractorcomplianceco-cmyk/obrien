@@ -104,7 +104,7 @@ export function Payment() {
               <input 
                 type="submit" 
                 value="Submit Card Payment" 
-                className="w-full bg-navy text-white hover:bg-navy/90 py-4 font-semibold tracking-[0.15em] uppercase text-[10px] md:text-xs transition-colors duration-300 cursor-pointer text-center"
+                className="w-full border border-navy/20 text-navy hover:bg-navy/5 py-4 font-semibold tracking-[0.15em] uppercase text-[10px] md:text-xs transition-colors duration-300 cursor-pointer text-center"
               />
             </form>
           </motion.div>
@@ -115,8 +115,11 @@ export function Payment() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="bg-white border border-black/5 p-8 md:p-14 shadow-sm hover:shadow-xl transition-all duration-700 ease-[0.16,1,0.3,1] flex flex-col"
+            className="relative bg-white border border-champagne/40 border-t-2 border-t-champagne p-8 md:p-14 shadow-md hover:shadow-xl transition-all duration-700 ease-[0.16,1,0.3,1] flex flex-col"
           >
+            <div className="absolute top-0 right-8 md:right-14 -translate-y-1/2 bg-champagne text-navy px-4 py-1.5 font-semibold tracking-[0.2em] uppercase text-[9px] md:text-[10px]">
+              Recommended
+            </div>
             <div className="mb-auto">
               <div className="w-12 h-12 bg-navy/5 rounded-full flex items-center justify-center mb-8 border border-navy/10">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -132,7 +135,7 @@ export function Payment() {
               </div>
               <h3 className="text-2xl font-serif text-navy mb-4">Pay by Wire Transfer</h3>
               <p className="text-sm md:text-base text-charcoal/60 font-sans mb-10 leading-relaxed">
-                Prefer wire transfer? Download the wire instructions below.
+                Our preferred method of payment. No processing fee applies — download the wire instructions below.
               </p>
             </div>
 
@@ -141,7 +144,7 @@ export function Payment() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={handleWireDownload}
-              className="mt-8 block text-center w-full border border-navy/20 text-navy hover:bg-navy/5 py-4 font-semibold tracking-[0.15em] uppercase text-[10px] md:text-xs transition-colors duration-300"
+              className="mt-8 block text-center w-full bg-navy text-white hover:bg-navy/90 py-4 font-semibold tracking-[0.15em] uppercase text-[10px] md:text-xs transition-colors duration-300"
             >
               Download Wire Instructions
             </a>
