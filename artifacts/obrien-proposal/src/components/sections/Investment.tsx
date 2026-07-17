@@ -1,11 +1,26 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const lineItems = [
-  { label: "Qualifier Sourcing and Coordination Fee", amount: "$6,000" },
+const lineItems: {
+  label: string;
+  amount: string;
+  original?: string;
+  discountNote?: string;
+}[] = [
+  {
+    label: "Qualifier Sourcing and Coordination Fee",
+    original: "$6,000",
+    discountNote: "$10 discount applied",
+    amount: "$5,990",
+  },
   { label: "Initial Qualifier Placement Fee", amount: "$3,000" },
   { label: "CCA Application Processing Fee", amount: "$1,700" },
-  { label: "Nevada State Application Fee", amount: "$250" },
+  {
+    label: "Nevada State Application Fee",
+    original: "$250",
+    discountNote: "100% discount applied",
+    amount: "$0",
+  },
   { label: "Fingerprinting Estimate", amount: "$70" },
   { label: "FedEx / Document Shipping Estimate", amount: "$100" }
 ];
@@ -49,8 +64,18 @@ export function Investment() {
                   transition={{ duration: 0.8, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
                   className="flex justify-between items-end border-b border-white/5 pb-4 group"
                 >
-                  <span className="font-sans text-sm md:text-base text-white/60 group-hover:text-white/90 transition-colors duration-300 pr-4">{item.label}</span>
-                  <span className="font-serif text-base md:text-lg text-champagne">{item.amount}</span>
+                  <span className="font-sans text-sm md:text-base text-white/60 group-hover:text-white/90 transition-colors duration-300 pr-4">
+                    {item.label}
+                    {item.discountNote && (
+                      <span className="block mt-1 text-[10px] md:text-[11px] uppercase tracking-[0.15em] text-champagne/80">{item.discountNote}</span>
+                    )}
+                  </span>
+                  <span className="text-right whitespace-nowrap">
+                    {item.original && (
+                      <span className="font-serif text-sm md:text-base text-white/35 line-through mr-3">{item.original}</span>
+                    )}
+                    <span className="font-serif text-base md:text-lg text-champagne">{item.amount}</span>
+                  </span>
                 </motion.div>
               ))}
             </div>
@@ -67,7 +92,7 @@ export function Investment() {
             >
               <div className="absolute inset-0 bg-champagne/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <p className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/50 mb-4 relative z-10">Wire Payment Total</p>
-              <p className="text-3xl md:text-5xl font-serif text-white relative z-10">$11,120.00</p>
+              <p className="text-3xl md:text-5xl font-serif text-white relative z-10">$10,860.00</p>
             </motion.div>
 
             <motion.div 
@@ -78,7 +103,7 @@ export function Investment() {
               className="bg-[#0B233F]/30 border border-white/10 p-8 md:p-12 flex flex-col justify-center items-center text-center group"
             >
               <p className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/50 mb-4">Card Payment Total</p>
-              <p className="text-3xl md:text-5xl font-serif text-white/80 mb-5">$11,553.68</p>
+              <p className="text-3xl md:text-5xl font-serif text-white/80 mb-5">$11,283.54</p>
               <p className="text-[10px] uppercase tracking-[0.1em] text-white/40">Card payments include a 3.9% processing fee.</p>
             </motion.div>
           </div>
