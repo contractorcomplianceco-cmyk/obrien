@@ -1,7 +1,64 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import {
+  useNotifyPaymentSelected,
+  useRequestUploadUrl,
+  useSubmitRemittance,
+} from '@workspace/api-client-react';
 
 export function Payment() {
+  const notifyPayment = useNotifyPaymentSelected();
+  const requestUploadUrl = useRequestUploadUrl();
+  const submitRemittance = useSubmitRemittance();
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [uploadState, setUploadState] = useState<
+    'idle' | 'uploading' | 'success' | 'error'
+  >('idle');
+  const [uploadedName, setUploadedName] = useState<string | null>(null);
+
+  const handleCardSubmit = () => {
+    // sendBeacon survives the navigation to Authorize.net; a normal fetch
+    // can be cancelled when the browser unloads the page.
+    const payload = JSON.stringify({ method: 'card' });
+    const url = `${import.meta.env.BASE_URL}api/notifications/payment`;
+    if (!navigator.sendBeacon?.(url, new Blob([payload], { type: 'application/json' }))) {
+      notifyPayment.mutate({ data: { method: 'card' } });
+    }
+  };
+
+  const handleWireDownload = () => {
+    notifyPayment.mutate({ data: { method: 'wire' } });
+  };
+
+  const handleRemittanceFile = async (file: File) => {
+    setUploadState('uploading');
+    setUploadedName(file.name);
+    try {
+      const { uploadURL, objectPath } = await requestUploadUrl.mutateAsync({
+        data: {
+          name: file.name,
+          size: file.size,
+          contentType: file.type || 'application/octet-stream',
+        },
+      });
+
+      const putRes = await fetch(uploadURL, {
+        method: 'PUT',
+        headers: { 'Content-Type': file.type || 'application/octet-stream' },
+        body: file,
+      });
+      if (!putRes.ok) throw new Error(`Upload failed (${putRes.status})`);
+
+      await submitRemittance.mutateAsync({
+        data: { objectPath, fileName: file.name },
+      });
+      setUploadState('success');
+    } catch {
+      setUploadState('error');
+    }
+  };
+
   return (
     <section id="payment" className="py-32 bg-gray-50 border-b border-gray-200">
       <div className="container mx-auto px-6 md:px-12">
@@ -38,7 +95,7 @@ export function Payment() {
               </p>
             </div>
             
-            <form name="PrePage" method="post" action="https://Simplecheckout.authorize.net/payment/CatalogPayment.aspx" className="mt-8">
+            <form name="PrePage" method="post" action="https://Simplecheckout.authorize.net/payment/CatalogPayment.aspx" className="mt-8" onSubmit={handleCardSubmit}>
               <input type="hidden" name="LinkId" value="29df0394-07ed-4a9e-8e2d-ac9039126c5d" />
               <input 
                 type="submit" 
@@ -79,10 +136,54 @@ export function Payment() {
               href="https://workdrive.zohoexternal.com/external/28c701d222f6195d0db6843cd8244de78fff5d1ef448b60fc7e8caf210c3a200/download"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={handleWireDownload}
               className="mt-8 block text-center w-full border-2 border-navy text-navy hover:bg-navy hover:text-white py-4 font-bold tracking-widest uppercase text-xs transition-colors duration-300"
             >
               Download Wire Instructions PDF
             </a>
+
+            <div className="mt-8 pt-8 border-t border-gray-200">
+              <p className="text-charcoal/70 font-sans text-sm leading-relaxed mb-5">
+                Once your wire has been sent, please submit your remittance
+                confirmation below so we can match your payment and begin
+                processing without delay.
+              </p>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept=".pdf,.png,.jpg,.jpeg,.webp,.heic,.doc,.docx"
+                className="hidden"
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) void handleRemittanceFile(file);
+                  e.target.value = '';
+                }}
+              />
+              <button
+                type="button"
+                disabled={uploadState === 'uploading'}
+                onClick={() => fileInputRef.current?.click()}
+                className="block text-center w-full bg-navy text-white hover:bg-champagne hover:text-navy py-4 font-bold tracking-widest uppercase text-xs transition-colors duration-300 disabled:opacity-60 disabled:cursor-wait"
+              >
+                {uploadState === 'uploading'
+                  ? 'Uploading…'
+                  : 'Upload Wire Remittance'}
+              </button>
+              {uploadState === 'success' && (
+                <p className="mt-4 text-sm font-sans text-navy">
+                  Remittance received — thank you.{' '}
+                  {uploadedName && (
+                    <span className="text-charcoal/60">({uploadedName})</span>
+                  )}
+                </p>
+              )}
+              {uploadState === 'error' && (
+                <p className="mt-4 text-sm font-sans text-red-700">
+                  We could not process the upload. Please try again or email
+                  the remittance to rose@ccacontact.com.
+                </p>
+              )}
+            </div>
           </motion.div>
         </div>
       </div>

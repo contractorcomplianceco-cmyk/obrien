@@ -1,0 +1,1 @@
+- [Presigned upload limits](presigned-upload-limits.md) — presigned PUT URLs don't enforce size/type; verify object metadata server-side and rate-limit public minting endpoints.

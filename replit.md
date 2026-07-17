@@ -2,6 +2,8 @@
 
 Private client proposal microsite (Fortune 500 style) for O'Brien Construction, Inc. — Nevada Classification B General license expansion by qualifier placement, prepared by Contractor Compliance & Advisory. Lives in `artifacts/obrien-proposal`, served at `/`. Frontend-only; payment via embedded Authorize.net form (exact LinkId must not change) and wire-instructions PDF download link. Never mention "Finder's Fee" — use "Qualifier Sourcing and Coordination Fee". No licensing guarantees, no testimonials, no emojis.
 
+Backend (`artifacts/api-server`): Gmail connector emails rose@ccacontact.com when a payment option is selected (`POST /api/notifications/payment`, card uses `sendBeacon`) and when a wire remittance file is uploaded (`POST /api/remittance` after presigned-URL upload to App Storage). Public endpoints are rate-limited per IP; remittance files are verified server-side (size/type) since presigned URLs can't enforce limits. Upload endpoint is intentionally unauthenticated (public microsite, no accounts).
+
 ## Run & Operate
 
 - `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
