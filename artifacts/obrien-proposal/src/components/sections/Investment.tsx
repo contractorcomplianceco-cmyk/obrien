@@ -10,8 +10,8 @@ const lineItems: {
   {
     label: "Qualifier Sourcing and Coordination Fee",
     original: "$6,000",
-    discountNote: "$10 discount applied",
-    amount: "$5,990",
+    discountNote: "10% discount applied",
+    amount: "$5,400",
   },
   { label: "Initial Qualifier Placement Fee", amount: "$3,000" },
   { label: "CCA Application Processing Fee", amount: "$1,700" },
@@ -92,7 +92,7 @@ export function Investment() {
             >
               <div className="absolute inset-0 bg-champagne/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <p className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/50 mb-4 relative z-10">Wire Payment Total</p>
-              <p className="text-3xl md:text-5xl font-serif text-white relative z-10">$10,860.00</p>
+              <p className="text-3xl md:text-5xl font-serif text-white relative z-10">$10,270.00</p>
             </motion.div>
 
             <motion.div 
@@ -103,7 +103,7 @@ export function Investment() {
               className="bg-[#0B233F]/30 border border-white/10 p-8 md:p-12 flex flex-col justify-center items-center text-center group"
             >
               <p className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-white/50 mb-4">Card Payment Total</p>
-              <p className="text-3xl md:text-5xl font-serif text-white/80 mb-5">$11,283.54</p>
+              <p className="text-3xl md:text-5xl font-serif text-white/80 mb-5">$10,670.53</p>
               <p className="text-[10px] uppercase tracking-[0.1em] text-white/40">Card payments include a 3.9% processing fee.</p>
             </motion.div>
           </div>
